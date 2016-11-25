@@ -8,36 +8,36 @@ class RandomGenerator {
 	//http://www.eternallyconfuzzled.com/tuts/algorithms/jsw_tut_rand.aspx
 public:
 	RandomGenerator() {
-		this->m = 2147483647;
-		this->a = 16807;
-		this->q = m / a;
-		this->r = m%a;
-		this->initialSeed = 4;
-		this->ni = initialSeed;
+		_m = 2147483647;
+		_a = 16807;
+		_q = _m / _a;
+		_r = _m%_a;
+		_initialSeed = 4;
+		_ni = _initialSeed;
 	}
-	RandomGenerator(int _initialSeed) :initialSeed(_initialSeed), ni(initialSeed) {
-		this->m = 2147483647;
-		this->a = 16807;
-		this->q = m / a;
-		this->r = m%a;
+	RandomGenerator(int initialSeed) :_initialSeed(initialSeed), _ni(initialSeed) {
+		_m = 2147483647;
+		_a = 16807;
+		_q = _m / _a;
+		_r = _m%_a;
 	}
 	double getRand() {
-		this->ni = a*(ni%q) - r*(ni / q);
-		if (ni <= 0) {
-			ni += m;
+		_ni = _a*(_ni%_q) - _r*(_ni / _q);
+		if (_ni <= 0) {
+			_ni += _m;
 		}
-		return ni / (double)m;
+		return _ni / (double)_m;
 	}
 	int getInitialSeed() {
-		return this->initialSeed;
+		return _initialSeed;
 	}
 private:
-	int initialSeed;
-	int ni;
-	int m;
-	int a;
-	int q;
-	int r;
+	int _initialSeed;
+	int _ni;
+	int _m;
+	int _a;
+	int _q;
+	int _r;
 };
 
 
